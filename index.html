@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Penilaian Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <aside class="bg-dark" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+            <img src="shell_logo.png" alt="logo">
+            <span>Raport Karyawan</span>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="dashboard.html" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+            <a href="index.html" class="list-group-item list-group-item-action active"><i class="bi bi-card-list me-2"></i>Form Penilaian</a>
+            <a href="pegawai.html" class="list-group-item list-group-item-action"><i class="bi bi-people-fill me-2"></i>Data Karyawan</a>
+            <a href="laporan.html" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-bar-graph me-2"></i>Laporan</a>
+            <a href="pengaturan.html" class="list-group-item list-group-item-action"><i class="bi bi-gear-fill me-2"></i>Pengaturan</a>
+        </div>
+    </aside>
+    
+    <!-- Konten Utama -->
+    <main id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+            <div class="d-flex align-items-center">
+                <h2 class="fs-2 m-0">Formulir Penilaian Kinerja</h2>
+            </div>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i><span id="nama-admin-display">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                            <li><a class="dropdown-item" href="#" id="logout-button">Keluar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+            <!-- Form Penilaian -->
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-pencil-square me-2"></i>Input Penilaian Karyawan</h5>
+                </div>
+                <div class="card-body">
+                    <form id="form-penilaian">
+                        <input type="hidden" id="edit-id">
+                        
+                        <div class="mb-3">
+                            <label for="pilih-pegawai" class="form-label">Pilih Karyawan (untuk mengisi otomatis)</label>
+                            <select class="form-select" id="pilih-pegawai">
+                                <option value="">-- Pilih Karyawan yang Sudah Ada --</option>
+                            </select>
+                        </div>
+                        <hr>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nama" class="form-label">Nama Karyawan</label>
+                                <input type="text" class="form-control" id="nama" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="nip" class="form-label">NIP</label>
+                                <input type="text" class="form-control" id="nip" required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="lokasi" class="form-label">Lokasi/Cabang</label>
+                                <select class="form-select" id="lokasi" required>
+                                    <option value="">-- Pilih Lokasi --</option>
+                                    <option value="Basura">Basura</option>
+                                    <option value="JGC-1">JGC-1</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="jabatan" class="form-label">Jabatan</label>
+                                <select class="form-select" id="jabatan" required>
+                                    <option value="">-- Pilih Jabatan --</option>
+                                    <option value="Shift Manager">Shift Manager</option>
+                                    <option value="Mechanic">Mechanic</option>
+                                    <option value="Shop Service Champion">Shop Service Champion</option>
+                                    <option value="Forecourt Service Champion">Forecourt Service Champion</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Periode</label>
+                                <div class="input-group">
+                                    <select class="form-select" id="periode-quartal" required>
+                                        <option value="">Quartal</option>
+                                        <option value="Q1">Quartal 1</option>
+                                        <option value="Q2">Quartal 2</option>
+                                        <option value="Q3">Quartal 3</option>
+                                        <option value="Q4">Quartal 4</option>
+                                    </select>
+                                    <select class="form-select" id="periode-tahun" required>
+                                        <option value="">Tahun</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="tanggal-penilaian" class="form-label">Tanggal Penilaian</label>
+                                <input type="date" class="form-control" id="tanggal-penilaian" required>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <!-- Kategori Skills -->
+                        <h5 class="mt-4">1. Skills</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2"><label>Team Work</label><select class="form-select score-input" id="skill_team_work" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Komunikasi</label><select class="form-select score-input" id="skill_komunikasi" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Manajemen Waktu</label><select class="form-select score-input" id="skill_manajemen_waktu" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Goal Setting / Target</label><select class="form-select score-input" id="skill_goal_setting" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Problem Solving</label><select class="form-select score-input" id="skill_problem_solving" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                        </div>
+
+                        <!-- Kategori Knowledge -->
+                        <h5 class="mt-4">2. Knowledge</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2"><label>Pengalaman</label><select class="form-select score-input" id="knowledge_pengalaman" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Teori</label><select class="form-select score-input" id="knowledge_teori" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Pengembangan Keterampilan</label><select class="form-select score-input" id="knowledge_pengembangan" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                        </div>
+                        
+                        <!-- Kategori Attitudes -->
+                        <h5 class="mt-4">3. Attitudes</h5>
+                        <div class="row">
+                            <div class="col-md-4 mb-2"><label>Integritas</label><select class="form-select score-input" id="attitude_integritas" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Empati</label><select class="form-select score-input" id="attitude_empati" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Kooperatif</label><select class="form-select score-input" id="attitude_kooperatif" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Percaya Diri</label><select class="form-select score-input" id="attitude_percaya_diri" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Komitmen</label><select class="form-select score-input" id="attitude_komitmen" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Jujur</label><select class="form-select score-input" id="attitude_jujur" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                            <div class="col-md-4 mb-2"><label>Self Motivation</label><select class="form-select score-input" id="attitude_self_motivation" required><option value="">Pilih</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div>
+                        </div>
+
+                        <hr>
+                        <div class="mb-3">
+                            <label for="catatan" class="form-label">Catatan</label>
+                            <textarea class="form-control" id="catatan" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Simpan Penilaian</button>
+                        <button type="button" class="btn btn-secondary w-100 mt-2 d-none" id="btn-batal-edit">Batal Edit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mt-4">
+                <div class="card-body d-flex flex-wrap align-items-center">
+                    <strong class="me-3 mb-2 mb-md-0">Filter Laporan:</strong>
+                    <div class="me-2 mb-2 mb-md-0">
+                        <select class="form-select" id="filter-quartal" aria-label="Pilih Quartal">
+                            <option value="">Semua Quartal</option>
+                            <option value="1">Quartal 1 (Jan-Mar)</option>
+                            <option value="2">Quartal 2 (Apr-Jun)</option>
+                            <option value="3">Quartal 3 (Jul-Sep)</option>
+                            <option value="4">Quartal 4 (Okt-Des)</option>
+                        </select>
+                    </div>
+                    <div class="me-3 mb-2 mb-md-0">
+                        <select class="form-select" id="filter-tahun" aria-label="Pilih Tahun"></select>
+                    </div>
+                    <button class="btn btn-secondary" id="btn-tampilkan-semua">Tampilkan Semua Data</button>
+                </div>
+            </div>
+            <div class="card shadow-sm mt-4" id="print-area">
+                <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-table me-2"></i>Hasil Penilaian</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>NIP</th>
+                                    <th>Lokasi/Cabang</th>
+                                    <th>Avg.</th> <!-- PERUBAHAN DI SINI -->
+                                    <th>Predikat</th>
+                                    <th>Catatan</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="hasil-penilaian">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+<script>
+    const userDataNav = JSON.parse(localStorage.getItem('userData'));
+    if (userDataNav && userDataNav.namaTampilan) {
+        document.getElementById('nama-admin-display').textContent = userDataNav.namaTampilan;
+    }
+    document.getElementById('logout-button').addEventListener('click', function() {
+        sessionStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    });
+</script>
+    <script src="dashboard.js"></script>
+    <script src="theme-switcher.js"></script>
+</body>
+</html>

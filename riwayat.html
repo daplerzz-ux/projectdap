@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Penilaian Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="auth.js"></script>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <aside class="bg-dark" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+            <img src="shell_logo.png" alt="logo">
+            <span>Raport Karyawan</span>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="dashboard.html" class="list-group-item list-group-item-action"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+            <a href="index.html" class="list-group-item list-group-item-action"><i class="bi bi-card-list me-2"></i>Form Penilaian</a>
+            <a href="pegawai.html" class="list-group-item list-group-item-action active"><i class="bi bi-people-fill me-2"></i>Data Karyawan</a>
+            <a href="laporan.html" class="list-group-item list-group-item-action"><i class="bi bi-file-earmark-bar-graph me-2"></i>Laporan</a>
+            <a href="pengaturan.html" class="list-group-item list-group-item-action"><i class="bi bi-gear-fill me-2"></i>Pengaturan</a>
+        </div>
+    </aside>
+
+    <!-- Konten Utama -->
+    <main id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+            <div class="d-flex align-items-center">
+                <h2 class="fs-2 m-0">Riwayat Penilaian</h2>
+            </div>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i><span id="nama-admin-display">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                            <li><a class="dropdown-item" href="#" id="logout-button">Keluar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+            <!-- Informasi Karyawan -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title" id="riwayat-nama">Nama Karyawan</h5>
+                    <p class="card-text mb-1"><strong>NIP:</strong> <span id="riwayat-nip"></span></p>
+                    <p class="card-text"><strong>Jabatan Terakhir:</strong> <span id="riwayat-jabatan"></span></p>
+                </div>
+            </div>
+
+            <!-- Tabel Riwayat -->
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h5><i class="bi bi-clock-history me-2"></i>Daftar Penilaian Terdahulu</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal Penilaian</th>
+                                    <th>Periode</th>
+                                    <th>Skor Rata-rata</th>
+                                    <th>Predikat</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="riwayat-table-body">
+                                <!-- Data riwayat akan dimuat di sini -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="riwayat.js"></script>
+<script>
+    const userDataNav = JSON.parse(localStorage.getItem('userData'));
+    if (userDataNav && userDataNav.namaTampilan) {
+        document.getElementById('nama-admin-display').textContent = userDataNav.namaTampilan;
+    }
+    document.getElementById('logout-button').addEventListener('click', function() {
+        sessionStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>

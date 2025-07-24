@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cetak Laporan Penilaian</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white">
+
+<div class="container my-4 print-container">
+    <h4 class="text-center fw-bold text-uppercase mb-4">Form Penilaian Kinerja Karyawan</h4>
+
+    <!-- Informasi Karyawan -->
+    <table class="table table-bordered mb-4">
+        <tbody>
+            <tr>
+                <th style="width: 15%;">Nama</th>
+                <td id="cetak-nama"></td>
+                <td class="text-center align-middle fw-bold" rowspan="4" style="width: 30%; background-color: #0d6efd; color: white;">
+                    <div class="fs-6">SKOR AKHIR</div>
+                    <div class="display-4" id="cetak-skor-akhir">0.00</div>
+                </td>
+            </tr>
+            <tr>
+                <th>Jabatan</th>
+                <td id="cetak-jabatan"></td>
+            </tr>
+            <tr>
+                <th>Lokasi/Cabang</th>
+                <td id="cetak-lokasi"></td>
+            </tr>
+             <tr>
+                <th>Periode</th>
+                <td id="cetak-periode"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Tabel Penilaian Detail -->
+    <table class="table table-bordered table-sm">
+        <thead class="text-center" style="background-color: #ffc107;">
+            <tr>
+                <th style="width: 5%;">NO</th>
+                <th style="width: 35%;">Indikator Penilaian Kinerja</th>
+                <th>SK (1)</th>
+                <th>K (2)</th>
+                <th>C (3)</th>
+                <th>B (4)</th>
+                <th>SB (5)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Kategori Skills -->
+            <tr style="background-color: #f8f9fa;">
+                <td class="text-center fw-bold">1</td>
+                <td class="fw-bold" colspan="6">Skills</td>
+            </tr>
+            <tr> <td></td> <td>Team Work</td> <td class="text-center" id="cell-skill_team_work-1"></td> <td class="text-center" id="cell-skill_team_work-2"></td> <td class="text-center" id="cell-skill_team_work-3"></td> <td class="text-center" id="cell-skill_team_work-4"></td> <td class="text-center" id="cell-skill_team_work-5"></td> </tr>
+            <tr> <td></td> <td>Komunikasi</td> <td class="text-center" id="cell-skill_komunikasi-1"></td> <td class="text-center" id="cell-skill_komunikasi-2"></td> <td class="text-center" id="cell-skill_komunikasi-3"></td> <td class="text-center" id="cell-skill_komunikasi-4"></td> <td class="text-center" id="cell-skill_komunikasi-5"></td> </tr>
+            <tr> <td></td> <td>Manajemen Waktu</td> <td class="text-center" id="cell-skill_manajemen_waktu-1"></td> <td class="text-center" id="cell-skill_manajemen_waktu-2"></td> <td class="text-center" id="cell-skill_manajemen_waktu-3"></td> <td class="text-center" id="cell-skill_manajemen_waktu-4"></td> <td class="text-center" id="cell-skill_manajemen_waktu-5"></td> </tr>
+            <tr> <td></td> <td>Goal Setting / Target</td> <td class="text-center" id="cell-skill_goal_setting-1"></td> <td class="text-center" id="cell-skill_goal_setting-2"></td> <td class="text-center" id="cell-skill_goal_setting-3"></td> <td class="text-center" id="cell-skill_goal_setting-4"></td> <td class="text-center" id="cell-skill_goal_setting-5"></td> </tr>
+            <tr> <td></td> <td>Problem Solving</td> <td class="text-center" id="cell-skill_problem_solving-1"></td> <td class="text-center" id="cell-skill_problem_solving-2"></td> <td class="text-center" id="cell-skill_problem_solving-3"></td> <td class="text-center" id="cell-skill_problem_solving-4"></td> <td class="text-center" id="cell-skill_problem_solving-5"></td> </tr>
+
+            <!-- Kategori Knowledge -->
+            <tr style="background-color: #f8f9fa;">
+                <td class="text-center fw-bold">2</td>
+                <td class="fw-bold" colspan="6">Knowledge</td>
+            </tr>
+            <tr> <td></td> <td>Pengalaman</td> <td class="text-center" id="cell-knowledge_pengalaman-1"></td> <td class="text-center" id="cell-knowledge_pengalaman-2"></td> <td class="text-center" id="cell-knowledge_pengalaman-3"></td> <td class="text-center" id="cell-knowledge_pengalaman-4"></td> <td class="text-center" id="cell-knowledge_pengalaman-5"></td> </tr>
+            <tr> <td></td> <td>Teori</td> <td class="text-center" id="cell-knowledge_teori-1"></td> <td class="text-center" id="cell-knowledge_teori-2"></td> <td class="text-center" id="cell-knowledge_teori-3"></td> <td class="text-center" id="cell-knowledge_teori-4"></td> <td class="text-center" id="cell-knowledge_teori-5"></td> </tr>
+            <tr> <td></td> <td>Pengembangan Keterampilan</td> <td class="text-center" id="cell-knowledge_pengembangan-1"></td> <td class="text-center" id="cell-knowledge_pengembangan-2"></td> <td class="text-center" id="cell-knowledge_pengembangan-3"></td> <td class="text-center" id="cell-knowledge_pengembangan-4"></td> <td class="text-center" id="cell-knowledge_pengembangan-5"></td> </tr>
+
+            <!-- Kategori Attitudes -->
+            <tr style="background-color: #f8f9fa;">
+                <td class="text-center fw-bold">3</td>
+                <td class="fw-bold" colspan="6">Attitudes</td>
+            </tr>
+            <tr> <td></td> <td>Integritas</td> <td class="text-center" id="cell-attitude_integritas-1"></td> <td class="text-center" id="cell-attitude_integritas-2"></td> <td class="text-center" id="cell-attitude_integritas-3"></td> <td class="text-center" id="cell-attitude_integritas-4"></td> <td class="text-center" id="cell-attitude_integritas-5"></td> </tr>
+            <tr> <td></td> <td>Empati</td> <td class="text-center" id="cell-attitude_empati-1"></td> <td class="text-center" id="cell-attitude_empati-2"></td> <td class="text-center" id="cell-attitude_empati-3"></td> <td class="text-center" id="cell-attitude_empati-4"></td> <td class="text-center" id="cell-attitude_empati-5"></td> </tr>
+            <tr> <td></td> <td>Kooperatif</td> <td class="text-center" id="cell-attitude_kooperatif-1"></td> <td class="text-center" id="cell-attitude_kooperatif-2"></td> <td class="text-center" id="cell-attitude_kooperatif-3"></td> <td class="text-center" id="cell-attitude_kooperatif-4"></td> <td class="text-center" id="cell-attitude_kooperatif-5"></td> </tr>
+            <tr> <td></td> <td>Percaya Diri</td> <td class="text-center" id="cell-attitude_percaya_diri-1"></td> <td class="text-center" id="cell-attitude_percaya_diri-2"></td> <td class="text-center" id="cell-attitude_percaya_diri-3"></td> <td class="text-center" id="cell-attitude_percaya_diri-4"></td> <td class="text-center" id="cell-attitude_percaya_diri-5"></td> </tr>
+            <tr> <td></td> <td>Komitmen</td> <td class="text-center" id="cell-attitude_komitmen-1"></td> <td class="text-center" id="cell-attitude_komitmen-2"></td> <td class="text-center" id="cell-attitude_komitmen-3"></td> <td class="text-center" id="cell-attitude_komitmen-4"></td> <td class="text-center" id="cell-attitude_komitmen-5"></td> </tr>
+            <tr> <td></td> <td>Jujur</td> <td class="text-center" id="cell-attitude_jujur-1"></td> <td class="text-center" id="cell-attitude_jujur-2"></td> <td class="text-center" id="cell-attitude_jujur-3"></td> <td class="text-center" id="cell-attitude_jujur-4"></td> <td class="text-center" id="cell-attitude_jujur-5"></td> </tr>
+            <tr> <td></td> <td>Self Motivation</td> <td class="text-center" id="cell-attitude_self_motivation-1"></td> <td class="text-center" id="cell-attitude_self_motivation-2"></td> <td class="text-center" id="cell-attitude_self_motivation-3"></td> <td class="text-center" id="cell-attitude_self_motivation-4"></td> <td class="text-center" id="cell-attitude_self_motivation-5"></td> </tr>
+        </tbody>
+    </table>
+
+    <!-- Rekomendasi -->
+    <div class="border p-2">
+        <p class="fw-bold mb-1">Catatan:</p>
+        <p id="cetak-catatan" class="mb-0"></p>
+    </div>
+</div>
+
+<script src="cetak-laporan.js"></script>
+</body>
+</html>
